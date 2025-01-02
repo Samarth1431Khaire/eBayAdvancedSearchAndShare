@@ -1,0 +1,46 @@
+<div class="container">
+  <div *ngIf="showProgressBar" class="progress">
+    <div 
+      class="progress-bar progress-bar-striped" 
+      role="progressbar" 
+      [style.width]="progressBarValue + '%'" 
+      [attr.aria-valuenow]="progressBarValue" 
+      aria-valuemin="0" 
+      aria-valuemax="100">
+    </div>
+  </div>
+</div>
+<div *ngIf="!showProgressBar" class="d-flex justify-content-center align-items-center container">
+  <div class="text-center">
+    <p>{{title}}</p>
+  </div>
+</div>
+<div class="container" *ngIf="!showProgressBar">
+  <div class="row">
+    <div class="col text-start">
+      <button class="btn btn-color" (click)="backbutton()"><span class="material-symbols-outlined style-icon">
+        chevron_left
+        </span>List</button>
+    </div>
+    <div class="col text-end">
+      <button class="btn btn-primary btn-sm btn-light facebook" name="cart" (click)="facebookShare()">
+        <img src="../../../assets/facebook.png" alt="facebook">
+    </button>
+      <button class="btn btn-primary btn-sm btn-light px-3 py-1" name="cart" (click)="toogleIcon()" [ngClass]="{'remove-class': item.isInWishlist}">
+        <span class="material-icons img-fluid">{{ item.isInWishlist ? 'remove_shopping_cart' : 'add_shopping_cart' }}</span>
+    </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-end">
+      <button type="button" class="btn px-3 mt-3" routerLink="/individual/product" routerLinkActive="active">Product</button>
+      <button type="button" class="btn px-3 mt-3" routerLink="/individual/photos" routerLinkActive="active">Photos</button>
+      <button type="button" class="btn px-3 mt-3" routerLink="/individual/shipping" routerLinkActive="active">Shipping</button>
+      <button type="button" class="btn px-3 mt-3" routerLink="/individual/seller" routerLinkActive="active">Seller</button>
+      <button type="button" class="btn px-3 mt-3" routerLink="/individual/similarproduct" routerLinkActive="active">Similar Product</button>
+    </div>
+    <hr>
+  </div>
+</div>
+<router-outlet></router-outlet>
+

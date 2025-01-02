@@ -1,0 +1,67 @@
+<div *ngIf="results.length > 0; else noResults" class="table-responsive container">
+  <div class="text-end my-2">
+    <button class="btn btn-style text-end" (click)="test()" [disabled]="isItemIdNull()">Details<span class="material-symbols-outlined icon-align">chevron_right</span></button>
+  </div>
+  <table  class="table table-striped table-dark table-hover">
+    <thead>
+      <tr>
+        <th scope="col" class="index-width">#</th>
+        <th scope="col" class="image-width">Image</th>
+        <th scope="col" class="title-width">Title</th>
+        <th scope="col">Price</th>
+        <th scope="col">Shipping</th>
+        <th scope="col">Zip</th>
+        <th scope="col" class="wrap">Wish List</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tbody>
+          <!-- Loop through results if there are any -->
+          <tr *ngFor="let item of results | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }; let i = index"
+          [ngClass]="{'table-secondary': item.itemId[0] === selectedItemId}">
+            <th scope="row" class="index-width">{{ (currentPage - 1) * itemsPerPage + i + 1 }}</th>
+            
+            <!-- Image -->
+            <td (click)="openImage(item.galleryURL[0] || 'N/A')">
+              <!-- <div [style.backgroundImage]="'url(' + (item.galleryURL[0] || '../../../assets/img-placeholder.JPG') + ')'"
+                   [attr.alt]="item.title[0] || 'N/A'"
+                   class="img-fluid img-format">
+              </div> -->
+              <img [src]="item.galleryURL[0] || '../../../assets/img-placeholder.JPG'"
+                [alt]="item.title[0] || 'N/A'"
+                class="img-format">
+            </td>
+          
+            
+            <!-- Title -->
+            <td class="wrap title" (click)="performTitleAction(item)" ><span matTooltip="{{item.title[0] || 'N/A'}}">{{ truncateTitle(item.title[0]) || 'N/A' }}</span></td>
+            
+            <!-- Price -->
+            <td class="wrap">{{ '$' + item.sellingStatus?.[0]?.currentPrice?.[0]?.__value__ || 'N/A' }}</td>
+            
+            <!-- Shipping -->
+            <td class="wrap">
+                {{ item.shippingInfo?.[0]?.shippingServiceCost?.[0]?.__value__ === '0.0' ? 'Free Shipping' :( '$' + item.shippingInfo?.[0]?.shippingServiceCost?.[0]?.__value__ || 'N/A' )}}
+            </td>
+            
+            <!-- Zip -->
+            <td class="wrap">{{ item.postalCode[0] || 'N/A' }}</td>
+            
+            <!-- Wishlist Button -->
+            <td>
+                <button class="btn btn-primary btn-sm btn-light px-3 py-1" name="cart" (click)="toogleIcon(item)" [ngClass]="{'remove-class': item.isInWishlist}">
+                    <span class="material-icons img-fluid">{{ item.isInWishlist ? 'remove_shopping_cart' : 'add_shopping_cart' }}</span>
+                </button>
+            </td>
+        </tr>
+      </tbody>
+  </table>
+  <pagination-controls (pageChange)="currentPage = $event" class="pagination-format"></pagination-controls>
+</div>
+<div class="container">
+  <ng-template #noResults>
+    <div class="d-flex justify-content-center align-items-center container" style="height: 50px; background-color: #FFF3CD;"> <!-- Adjust height as needed -->
+      <span class="text-center" style="color: #90865f;">No Records.</span>
+    </div>
+  </ng-template>
+</div>

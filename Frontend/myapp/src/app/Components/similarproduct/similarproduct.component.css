@@ -1,0 +1,45 @@
+.wrap{
+    text-wrap: nowrap;
+}
+.image-width{
+    width: 10%;
+}
+.img-format{
+    width: 150px; /* adjust as needed */
+    height: 150px; /* adjust as needed */
+}
+@media (min-width: 992px) {
+    .reduced-width {
+        width: 30%;
+    }
+}
+.table-spacing {
+    border-collapse: separate;
+    border-spacing: 0 15px;  /* Adjust the second value (vertical spacing) as needed */
+}
+.btn.active {
+    background-color: #212529 !important; /* !important to override Bootstrap styles */
+    color: white !important;  /* Making text color white for visibility */
+  }
+.btn:active{
+    background-color: #212529 !important; /* !important to override Bootstrap styles */
+    color: white !important;  /* Making text color white for visibility */
+    border: #212529;
+}
+.title{
+    color: #6f9398;
+    text-decoration: none;
+}
+.title:hover{
+    color: #6f9398;
+    text-decoration: underline;
+}
+.price{
+    color: #ccffc7;
+}
+.cost{
+    color: #d9bf63;
+}
+.daysleft{
+    color: #f7faff;
+}

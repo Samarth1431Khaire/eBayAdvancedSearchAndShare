@@ -1,0 +1,25 @@
+<!-- First set of images -->
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-4 div-margin">
+            <img *ngFor="let image of productImages?.slice(0,2)" [src]="image?.link" class="img-fixed-width my-2" alt="Product Image" (click)="openImageInNewTab(image?.link)">
+        </div>
+        
+        <!-- Second set of images -->
+        <div class="col-md-4 div-margin">
+            <img *ngFor="let image of productImages?.slice(2,5)" [src]="image?.link" class="img-fixed-width my-2" alt="Product Image" (click)="openImageInNewTab(image?.link)">
+        </div>
+        
+        
+        <!-- Third set of images -->
+        <div class="col-md-4 div-margin">
+            <img *ngFor="let image of productImages?.slice(5,8)" [src]="image?.link" class="img-fixed-width my-2" alt="Product Image" (click)="openImageInNewTab(image?.link)">
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="productImages.length == 0">
+      <div class="d-flex justify-content-center align-items-center container" style="height: 50px; background-color: #FFF3CD;"> <!-- Adjust height as needed -->
+        <span class="text-center" style="color: #90865f;">No Records.</span>
+      </div>
+</div>
+

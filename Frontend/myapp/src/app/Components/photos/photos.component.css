@@ -1,0 +1,7 @@
+  .img-fixed-width {
+    width: 100%; /* Full width of the parent container */
+    object-fit: contain; /* Keeps the aspect ratio without cropping */
+  }  
+img{
+    border: 12px solid black;
+}

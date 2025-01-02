@@ -1,0 +1,25 @@
+.carousel-control-prev-icon {
+    background-color: black;
+}
+
+.carousel-control-next-icon {
+    background-color: black;
+}
+
+.btn-style{
+    padding: 0px;
+    color: #2b8083;
+}
+@media (min-width: 768px) {
+    .col-width {
+      width: 35%;
+    }
+  }
+  
+.img-border{
+    border: 12px solid black;
+}
+.img-container{
+    height: 400px;
+    object-fit: contain;
+}

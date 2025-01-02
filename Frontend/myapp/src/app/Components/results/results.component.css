@@ -1,0 +1,41 @@
+.wrap{
+    text-wrap: nowrap;
+}
+.index-width{
+    width: 5%;
+}
+.image-width{
+    width: 10%;
+}
+.title-width{
+    width: 35%;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24;
+}
+.remove-class{
+    color: #a68013;
+}
+.title{
+    color: blue;
+}
+.img-format{
+    width: 90px; /* adjust as needed */
+    height: 90px; /* adjust as needed */
+}
+.pagination-format{
+    text-align: center;
+}
+.icon-align{
+    vertical-align: middle;
+}
+.btn-style{
+    border: 0px;
+}
+.your-special-class{
+    background-color: aliceblue;
+}

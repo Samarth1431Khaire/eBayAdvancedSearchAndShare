@@ -1,0 +1,32 @@
+.break-word {
+    display: inline;
+}
+@media (min-width: 576px) {
+    .break-word {
+        display: block;
+    }
+}
+.form-control.ng-invalid.ng-touched {
+    border-color: red;
+}
+
+/* Override Bootstrap's active state for button */
+.btn.active {
+    background-color: #212529 !important; /* !important to override Bootstrap styles */
+    color: white !important;  /* Making text color white for visibility */
+  }
+  .btn:active{
+    background-color: #212529 !important; /* !important to override Bootstrap styles */
+    color: white !important;  /* Making text color white for visibility */
+    border: #212529;
+}
+.icon-align{
+    vertical-align: middle;
+}
+.results-active{
+    background-color: #212529 !important;
+    color: white !important;
+}
+.txt-wrap{
+    text-wrap: nowrap;
+}

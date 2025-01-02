@@ -1,0 +1,31 @@
+@media (min-width: 768px) {
+    .col-width {
+      width: 35%;
+    }
+  }
+.progress-width{
+  position: relative;
+  width: 30px !important;
+  height: 30px !important;
+}
+a{
+  color: #2b8083;
+  text-decoration: none;
+}
+.close-icon{
+  color: red;
+}
+.check-icon{
+  color: green;
+}
+.item-dis{
+  position: absolute;
+  font-size: 11px;
+  padding: 5px
+}
+.progress-container{
+  position: relative;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}

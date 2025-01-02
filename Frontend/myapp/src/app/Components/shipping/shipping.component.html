@@ -1,0 +1,75 @@
+<div class="table-responsive container">
+    <table class="table table-dark">
+        <tbody>
+          <!-- Display shipping cost -->
+          <tr *ngIf="item?.shippingInfo?.[0]?.shippingServiceCost?.[0]?.__value__">
+              <td class="d-sm-table-cell d-block col-width">Shipping Cost</td>
+              <td class="d-sm-table-cell d-block">
+                <ng-container *ngIf="item.shippingInfo[0].shippingServiceCost[0].__value__ === '0.0'; else cost">
+                  Free Shipping
+                </ng-container>
+                <ng-template #cost>
+                  {{ item.shippingInfo[0].shippingServiceCost[0].__value__ | currency:'USD' }}
+                </ng-template>
+              </td>
+              
+          </tr>
+
+          <!-- Display shipping locations -->
+          <tr *ngIf="item?.shippingInfo?.[0]?.shipToLocations?.[0]">
+              <td class="d-sm-table-cell d-block col-width">Shipping Locations</td>
+              <td class="d-sm-table-cell d-block">{{ item.shippingInfo[0].shipToLocations[0] }}</td>
+          </tr>
+
+          <!-- Display handling time -->
+          <tr *ngIf="item?.shippingInfo?.[0]?.handlingTime?.[0]">
+              <td class="d-sm-table-cell d-block col-width">Handling Time</td>
+              <td class="d-sm-table-cell d-block">
+                {{ item.shippingInfo[0].handlingTime[0] }}
+                {{ item.shippingInfo[0].handlingTime[0] === '1' || item.shippingInfo[0].handlingTime[0] === '0' ? 'Day' : 'Days' }}
+            </td>
+          </tr>
+
+          <!-- Display expedited shipping -->
+          <tr *ngIf="item?.shippingInfo?.[0]?.expeditedShipping?.[0]">
+            <td class="d-sm-table-cell d-block col-width">Expedited Shipping</td>
+            <td class="d-sm-table-cell d-block">
+                <span class="material-symbols-outlined" [ngClass]="{
+                    'check-icon': item.shippingInfo[0].expeditedShipping[0] === 'true', 
+                    'close-icon': item.shippingInfo[0].expeditedShipping[0] !== 'true'
+                }">
+                    {{ item.shippingInfo[0].expeditedShipping[0] === 'true' ? 'check' : 'close' }}
+                </span>
+            </td>
+        </tr>
+
+          <!-- Display one day shipping -->
+        <tr *ngIf="item?.shippingInfo?.[0]?.oneDayShippingAvailable?.[0]">
+          <td class="d-sm-table-cell d-block col-width">One Day Shipping</td>
+          <td class="d-sm-table-cell d-block">
+            <span class="material-symbols-outlined" [ngClass]="{
+                'check-icon': item.shippingInfo[0].oneDayShippingAvailable[0] === 'true', 
+                'close-icon': item.shippingInfo[0].oneDayShippingAvailable[0] !== 'true'
+              }">
+                {{ item.shippingInfo[0].oneDayShippingAvailable[0] === 'true' ? 'check' : 'close' }}
+              </span>
+          </td>
+        </tr>
+
+        <!-- Display return accepted -->
+        <tr *ngIf="item?.returnsAccepted?.[0]">
+          <td class="d-sm-table-cell d-block col-width">Return Accepted</td>
+          <td class="d-sm-table-cell d-block">
+            <span class="material-symbols-outlined" [ngClass]="{
+                'check-icon': item.returnsAccepted[0] === 'true', 
+                'close-icon': item.returnsAccepted[0] !== 'true'
+              }">
+                {{ item.returnsAccepted[0] === 'true' ? 'check' : 'close' }}
+              </span>
+          </td>
+          
+        </tr>
+
+        </tbody>
+    </table>
+</div>

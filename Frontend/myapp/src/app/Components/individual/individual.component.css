@@ -1,0 +1,26 @@
+.btn.active {
+    background-color: #212529 !important; /* !important to override Bootstrap styles */
+    color: white !important;  /* Making text color white for visibility */
+    border: #212529;
+  }
+.btn:active{
+    background-color: #212529 !important; /* !important to override Bootstrap styles */
+    color: white !important;  /* Making text color white for visibility */
+    border: #212529;
+}
+.remove-class{
+  color: #a68013;
+}
+.style-icon{
+  vertical-align: middle;
+}
+img{
+  width: 40px;
+  height: 40px;
+}
+.facebook{
+  padding: 0px;
+}
+.btn-color{
+  background-color: #f7f7f7;
+}

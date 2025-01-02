@@ -1,0 +1,72 @@
+<div class="table-responsive container">
+    <table class="table table-striped table-dark">
+        <tbody>
+            <tr *ngIf="item?.Seller && item.Seller?.UserID">
+                <td colspan="2" class="text-uppercase text-center">{{ item.Seller.UserID | uppercase }}</td>
+            </tr>              
+          <!-- Display Feedback Score if present -->
+          <tr *ngIf="item?.Seller && item.Seller?.FeedbackScore">
+              <td class="d-sm-table-cell d-block col-width">Feedback Score</td>
+              <!-- <span class="material-icons">face</span> -->
+              <td class="d-sm-table-cell d-block">{{ item.Seller.FeedbackScore }}</td>
+          </tr>
+
+          <!-- Display Popularity if present -->
+          <tr *ngIf="item?.Seller && item.Seller?.PositiveFeedbackPercent">
+              <td class="d-sm-table-cell d-block col-width">Popularity</td>
+              <td class="d-sm-table-cell d-block" class="progress-container"><round-progress 
+                [max]="100"
+                [current]="item.Seller.PositiveFeedbackPercent" [color]="'#008000'" class="progress-width">
+            </round-progress><span class="item-dis">{{item?.Seller.PositiveFeedbackPercent}}</span></td>
+          </tr>
+
+          <!-- Display Feedback Rating Star if present -->
+          <tr *ngIf="item?.Seller && item.Seller?.FeedbackRatingStar">
+            <td class="d-sm-table-cell d-block col-width">Feedback Rating Star</td>
+            <td class="d-sm-table-cell d-block">
+              <span *ngIf="processFeedbackScore(item.Seller.FeedbackScore) >= 10000; else starBorder" 
+                    [ngStyle]="{'color': removeShootingFromString(item.Seller.FeedbackRatingStar)}" 
+                    class="material-icons">
+                stars
+              </span>
+              <ng-template #starBorder>
+                <span *ngIf="processFeedbackScore(item.Seller.FeedbackScore) > 9; else notApplicable" 
+                      [ngStyle]="{'color': removeShootingFromString(item.Seller.FeedbackRatingStar)}" 
+                      class="material-icons">
+                  star_border
+                </span>
+              </ng-template>
+              <ng-template #notApplicable>
+                N/A
+              </ng-template>
+            </td>
+          </tr>
+          
+
+          <!-- Display Top Rated if present -->
+          <tr *ngIf="item?.Seller && item.Seller?.TopRatedSeller">
+              <td class="d-sm-table-cell d-block col-width">Top Rated</td>
+              <td class="d-sm-table-cell d-block">
+                <span class="material-symbols-outlined" [ngClass]="{
+                    'check-icon': item.Seller.TopRatedSeller === true, 
+                    'close-icon': item.Seller.TopRatedSeller !== true
+                  }">
+                    {{ item.Seller.TopRatedSeller === true ? 'check' : 'close' }}
+                  </span>
+              </td>
+          </tr>
+
+          <!-- Display Store Name if present -->
+          <tr *ngIf="item?.Storefront && item.Storefront?.StoreName">
+              <td class="d-sm-table-cell d-block col-width">Store Name</td>
+              <td class="d-sm-table-cell d-block">{{ item.Storefront.StoreName }}</td>
+          </tr>
+
+          <!-- Display Buy Product At (Store URL) if present -->
+          <tr *ngIf="item?.Storefront && item.Storefront?.StoreURL">
+              <td class="d-sm-table-cell d-block col-width">Buy Product At</td>
+              <td class="d-sm-table-cell d-block"><a [href]="item.Storefront.StoreURL" target="_blank" rel="noopener noreferrer">Store</a></td>
+          </tr>
+        </tbody>
+    </table>
+</div>
