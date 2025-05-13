@@ -16,10 +16,10 @@ app.use(function (req, res, next) {
 });
 app.use(bodyParser.json());
 
-const uri = "mongodb+srv://rgadia2000:mynewpassword@cluster0.xtutyy3.mongodb.net/?retryWrites=true&w=majority";
-const APP_ID = 'RiddhamG-CSCI571A-PRD-472b2ae15-4dc4edc3';
+const uri = "mongodb+srv://skhaire2000:mynewpassword@cluster0.xtutyy3.mongodb.net/?retryWrites=true&w=majority";
+const APP_ID = 'samarthK-CSCI571A-PRD-472b2ae15-4dc4edc3';
 
-const client_id = 'RiddhamG-CSCI571A-PRD-472b2ae15-4dc4edc3';
+const client_id = 'samarthK-CSCI571A-PRD-472b2ae15-4dc4edc3';
 const client_secret = 'PRD-72b2ae1509dc-c457-4c34-bf06-41f2';
 const oauthToken = new OAuthToken(client_id, client_secret);
 
@@ -57,7 +57,7 @@ app.get('/autocomplete', (req, res) => {
     }
     axios
       .get(
-        `http://api.geonames.org/postalCodeSearchJSON?postalcode_startsWith=${zipCode}&maxRows=5&username=riddhamgadia&country=US`
+        `http://api.geonames.org/postalCodeSearchJSON?postalcode_startsWith=${zipCode}&maxRows=5&username=samarthk&country=US`
       )
       .then((geonamesResponse) => {
         // Extract and send the suggestions as JSON response
